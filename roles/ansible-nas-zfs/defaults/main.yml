@@ -1,0 +1,12 @@
+---
+# create the various pools for the services to use and for backup.
+# This makes the big assumption that you're using ZFS as the
+# data / docker drive.
+
+
+- name: Create a new file system called myfs in pool rpool with the setuid property turned off
+  zfs:
+    name: vault/tv
+    state: present
+    extra_zfs_properties:
+      setuid: off

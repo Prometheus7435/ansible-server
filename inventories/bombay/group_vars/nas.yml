@@ -1,0 +1,86 @@
+---
+##                       ._____.   .__
+##  _____    ____   _____|__\_ |__ |  |   ____             ____ _____    ______
+##  \__  \  /    \ /  ___/  || __ \|  | _/ __ \   ______  /    \\__  \  /  ___/
+##   / __ \|   |  \\___ \|  || \_\ \  |_\  ___/  /_____/ |   |  \/ __ \_\___ \
+##  (____  /___|  /____  >__||___  /____/\___  >         |___|  (____  /____  >
+##       \/     \/     \/        \/          \/               \/     \/     \/
+##     a n s i b l e - n a s      https://github.com/davestephens/ansible-nas
+
+# Add your all.yml config overrides to this file. See group_vars/all.yml for all possible settings.
+
+ansible_nas_hostname: bombay-nas
+ansible_nas_timezone: America/New_York
+ansible_nas_user: ansible
+ansible_nas_email: zacharybombay@gmail.com
+ansible_nas_domain: bombays.cloud
+
+# Sambay
+# samba_shares_root: /mnt/vault/samba
+# NFS
+# nfs_shares_root: /mnt/vault/nfs
+
+# docker_home: "{{ nfs_shares_root }}/docker"
+
+# Where you want Docker to store images
+# docker_image_directory: "{{ docker_home }}/data"
+
+
+## Enable all the applications
+# airsonic_enabled: true
+# bazarr_enabled: true
+# bitwarden_enabled: true
+# booksonic_enabled: true
+calibre_enabled: true
+# cloudcmd_enabled: true
+# cloudflare_ddns_enabled: true
+# couchpotato_enabled: true
+# dashy_enabled: true
+# deluge_enabled: true
+# duplicacy_enabled: true
+# duplicati_enabled: true
+# firefly_enabled: true
+# freshrss_enabled: true
+# gitea_enabled: true
+# gitlab_enabled: true
+# glances_enabled: true
+# cotify_enabled: true
+# guacamole_enabled: true
+# healthchecks_enabled: true
+heimdall_enabled: true
+# jackett_enabled: true
+# jellyfin_enabled: true
+# komga_enabled: true
+# lidarr_enabled: true
+# mealie_enabled: true
+# miniflux_enabled: true
+# mosquitto_enabled: true
+# mylar_enabled: true
+# navidrome_enabled: true
+# nextcloud_enabled: true
+# nzbget_enabled: true
+# ombi_enabled: true
+# overseerr_enabled: true
+# paperless_ng_enabled: true
+# plex_enabled: true
+# portainer_enabled: true
+# prowlarr_enabled: true
+# pyload_enabled: true
+# radarr_enabled: true
+# rssbridge_enabled: true
+# sabnzbd_enabled: true
+# sickchill_enabled: true
+# sonarr_enabled: true
+# stats_enabled: true
+# syncthing_enabled: true
+# tautulli_enabled: true
+traefik_enabled: true
+# transmission_enabled: true
+# transmission_with_openvpn_enabled: true
+# ubooquity_enabled: true
+# unifi_enabled: true
+# utorrent_enabled: true
+# wallabag_enabled: true
+# watchtower_enabled: true
+# woodpecker_ci_enabled: true
+# youtubedlmaterial_enabled: true

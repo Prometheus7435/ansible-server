@@ -1,0 +1,53 @@
+---
+- name: Create Traefik Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ traefik_data_directory }}"
+    - "{{ traefik_data_directory }}/letsencrypt"
+
+- name: Template Traefik config.toml
+  template:
+    src: traefik.toml
+    dest: "{{ traefik_data_directory }}/traefik.toml"
+  register: template_config
+
+- name: Traefik Docker Container
+  docker_container:
+    name: traefik
+    image: "{{ traefik_docker_image }}"
+    pull: true
+    network_mode: host
+    volumes:
+      - "{{ traefik_data_directory }}/traefik.toml:/etc/traefik/traefik.toml:ro"
+      - "{{ traefik_data_directory }}/letsencrypt:/letsencrypt:rw"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    env: "{{ traefik_environment_variables }}"
+    restart_policy: unless-stopped
+    memory: "{{ traefik_memory }}"
+    recreate: "{{ template_config is changed }}"
+
+
+
+# version: '3.4'
+# services:
+#   traefik:
+#     image: traefik:2.1
+#     restart: always
+#     ports:
+#       - '80:80'
+#       - '443:443'
+#     volumes:
+#     - ./traefik:/etc/traefik
+#     - /var/run/docker.sock:/var/run/docker.sock:ro
+# version: '3.4'
+# services:
+#   # ...
+#   my-app:
+#     image: my-app:latest
+#     labels:
+#       - 'traefik.enable=true'
+#       - 'traefik.http.routers.my-app.rule=Host(`example.com`)'
+#       - 'traefik.http.routers.my-app.tls=true'
+#       - 'traefik.http.routers.my-app.tls.certresolver=lets-encrypt'
