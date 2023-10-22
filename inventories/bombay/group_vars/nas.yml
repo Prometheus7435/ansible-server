@@ -11,7 +11,7 @@
 
 ansible_nas_hostname: bombay-nas
 ansible_nas_timezone: America/New_York
-ansible_nas_user: ansible
+ansible_nas_user: starfleet
 ansible_nas_email: zacharybombay@gmail.com
 ansible_nas_domain: bombays.cloud
 
